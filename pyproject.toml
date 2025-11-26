@@ -1,0 +1,10 @@
+[project]
+name = "archi"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "cairosvg>=2.7.1",
+    "ultralytics>=8.3.230",
+]

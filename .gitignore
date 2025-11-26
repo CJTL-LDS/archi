@@ -1,0 +1,10 @@
+.venv
+.vscode
+.idea
+dataset
+dataset.yaml
+dataset_mixed*
+dataset2
+raw
+runs
+exports
