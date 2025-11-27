@@ -9,14 +9,14 @@ def str_to_bool(value: str) -> bool:
 
 
 def main() -> None:
-    weight_path = Path(os.environ.get("YOLO_WEIGHTS", "runs/detect/train7/weights/best.pt"))
+    weight_path = Path(os.environ.get("YOLO_WEIGHTS", "../runs/detect/train12/weights/best.pt"))
     if not weight_path.exists():
         raise FileNotFoundError(f"Weights not found at {weight_path}")
 
-    project_dir = Path(os.environ.get("YOLO_EXPORT_DIR", "exports"))
+    project_dir = Path("../exports")
     project_dir.mkdir(parents=True, exist_ok=True)
 
-    export_name = os.environ.get("YOLO_EXPORT_NAME", weight_path.stem)
+    export_name = "train9"
     imgsz = int(os.environ.get("YOLO_IMGSZ", "640"))
 
     export_kwargs = {
@@ -26,8 +26,8 @@ def main() -> None:
         "name": export_name,
     }
 
-    if "YOLO_ONNX_OPSET" in os.environ:
-        export_kwargs["opset"] = int(os.environ["YOLO_ONNX_OPSET"])
+    
+    export_kwargs["opset"] = 11
     if "YOLO_ONNX_DYNAMIC" in os.environ:
         export_kwargs["dynamic"] = str_to_bool(os.environ["YOLO_ONNX_DYNAMIC"])
 

@@ -40,10 +40,10 @@ NormalizedBox = Tuple[int, float, float, float, float]  # cls, x, y, w, h
 AugmentFn = Callable[[Image.Image, Sequence[NormalizedBox]], Tuple[Image.Image, List[NormalizedBox]]]
 
 # Constants ----------------------------------------------------------------
-LABELS_FILE = "labels.txt"
-IMAGES_SRC_DIR = Path("./raw/png")
-ANNOTATIONS_SRC_DIR = Path("png_annt")
-DEFAULT_OUTPUT = Path("dataset")
+LABELS_FILE = "../labels.txt"
+IMAGES_SRC_DIR = Path("../raw/hide")
+ANNOTATIONS_SRC_DIR = Path("../raw/hid_annt")
+DEFAULT_OUTPUT = Path("../dataset3")
 RANDOM_SEED = 42
 
 # Utility helpers ----------------------------------------------------------
@@ -212,8 +212,8 @@ def augment_dataset(output_dir: Path, copies: int) -> None:
 
             annotation_path = annotation_map.get(trimmed)
             boxes = parse_boxes(annotation_path) if annotation_path else []
-            if boxes:
-                boxes = ensure_class_ids(boxes, class_index_map, trimmed)
+            # if boxes:
+            #     boxes = ensure_class_ids(boxes, class_index_map, trimmed)
 
             for variant in variants:
                 variant_img, variant_boxes = variant.apply(img, boxes)
